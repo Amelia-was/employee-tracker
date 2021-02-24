@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const { viewTable } = require('./lib/departments');
+const { viewTable } = require('./lib/tables');
 
 const promptOptions = () => {
     return inquirer
@@ -16,6 +16,7 @@ const promptOptions = () => {
         }
         else if (chooseTable === 'View Roles') {
             console.log('viewing roles ...');
+            return viewTable('roles');
         }
         else {
             console.log('viewing employees ...');
