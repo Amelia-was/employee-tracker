@@ -1,7 +1,7 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
-const { viewTable, viewEmployees } = require('./lib/queries');
+const { viewTable, viewRoles, viewEmployees } = require('./lib/queries');
 
 // create the connection to database
 const connection = mysql.createConnection({
@@ -54,7 +54,8 @@ const promptOptions = () => {
 ║  Roles  ║
 ╚═════════╝
 `);
-            connection.query(viewTable('roles'),
+            connection.query(
+                viewRoles(),
                 function (err, results) {
                     if (err) throw err;
                     console.table(results);
